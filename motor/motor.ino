@@ -38,6 +38,8 @@ void loop() {
   do{
       h();
       delay(2000);
+      stop();
+      delay(100);
       a_h();
       delay(100);
       stop();
