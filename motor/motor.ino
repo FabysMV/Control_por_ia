@@ -11,10 +11,11 @@ const int BIB = 9;  // (pwm) pin 6 connected to pin B-IB
 byte speed = 255;  // change this (0-255) to control the speed of the motors 
  
 void setup() {
-  pinMode(AIA, OUTPUT); // set pins to output
-  pinMode(AIB, OUTPUT);
+//  pinMode(AIA, OUTPUT); // set pins to output
+//  pinMode(AIB, OUTPUT);
   pinMode(BIA, OUTPUT);
   pinMode(BIB, OUTPUT);
+  Serial.begin(9600);
 }
  
 void loop() {
@@ -25,37 +26,48 @@ void loop() {
 //  stop();
 //  delay(1000);
 //-----------------------------------------
+//// ::: MOVIMIENTO UN POCO MÁS CONTROLADO, SOLO QUE SE REGRESA :: //////////
+/*
+  delay(1000);
+  anti_H();
+  Serial.println("Antihorario");
+  //delay(500);
   stop();
-  delay(5000);
-  Serial.println("Esperando 5 segundos");
-//  h();
-//  delay(2500);
-//  a_h();
-//  delay(1500);
-//  stop();
-//  delay(5000);
-  Serial.println("Esperando 5 segundos");
-  do{
-      h();
-      delay(2000);
-      stop();
-      delay(100);
-      a_h();
-      delay(100);
-      stop();
-      delay(1500);
-      i = i +1;
-    }while(i = 20);
-     i = 0;
+  Serial.println("STOPU");
+  //delay(500);
+  H();
+  */
+  //g_180();
+  //g_90();
+
+  H(4000);
+  
+  
+
+
+////////////////////////////////////////////////////////////////////////////////////  
+//  Serial.println("Esperando 5 segundos");
+//  do{
+//      h();
+//      delay(1500);
+//      stop();
+//      delay(100);
+//      a_h();
+//      delay(1000);
+//      stop();
+//      delay(1500);
+//      i = i +1;
+//    }while(i = 20);
+//     i = 0;
 
 
   //-------------------------------------------
   //_------------------------Test_1: Ambos motores giran en sentido horario juntos durante tres segundos, y se detienen durante 3 segundos
 //  Serial.println("Ambos motores giran en sentido horario juntos durante tres segundos, y se detienen durante 3 segundos");
 //  h();//¿Hacia donde gira?
-//  delay(3000);
+//  delay(5000);
 //  stop();//¿Qué hace al detenerse, cambia su giro, que tanto?
-//  delay(3000);
+//  delay(1500);
 //  //Al reinciar el giro horario, ¿vuelve a girar como al principio?
 //  //----------------------------------------------------------------------------------------------------
 //  //-------------------------Test_2: Ambos motores giran en sentido antihorario juntos durante 3 segundos, y se detienen durante 3 segundos
@@ -106,28 +118,14 @@ void loop() {
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void stop(){
-
+  delay(500);
   digitalWrite(BIA, 0);
   digitalWrite(BIB, 0);
-//  digitalWrite(AIB, 0);
-//  digitalWrite(AIA, 0);
+  digitalWrite(AIB, 0);
+  digitalWrite(AIA, 0);
   
   }
-  void left1()
-{
-  digitalWrite(AIA, HIGH);
-  digitalWrite(AIB, 0);
-//  digitalWrite(BIA, 0);
-//  digitalWrite(BIB, HIGH);
-}
- 
-void right1()
-{
-  digitalWrite(AIA, 0);
-  digitalWrite(AIB, HIGH);
-//  digitalWrite(BIA, HIGH);
-//  digitalWrite(BIB, 0);
-}
+
  
 void a_h()
 {
@@ -144,3 +142,50 @@ void h()
   digitalWrite(BIA, HIGH);
   digitalWrite(BIB, 0);
 }
+
+
+  void H(int t){
+    a_h();
+  delay(t); // tiempo en el que se a a quedar funcionando el motor
+  //Entre más tiempo sea, más rápido irá el motor. El tiempo lo pasamos como variable
+    for (int i = 1; i==3; i++){
+     h(); //hace movimiento horario como freno
+    delay(850); //lo hace por este tiempo
+    a_h(); // y amortiguamos el frenado con este movimiento
+    delay(250);
+  }
+  stop();
+  delay(1000);
+  }
+
+  
+void anti_H(int t) //hace lo mismo que H pero en sentido contrario
+{
+    h();
+  delay(t);
+    for (int i = 1; i==3; i++){
+     a_h();
+    delay(850);
+    h();
+    delay(250);
+  }
+  stop();
+  delay(1000);
+  }
+
+
+
+
+  void H(int t){
+    a_h();
+  delay(t); // tiempo en el que se a a quedar funcionando el motor
+  //Entre más tiempo sea, más rápido irá el motor. El tiempo lo pasamos como variable
+    for (int i = 1; i==3; i++){
+     h(); //hace movimiento horario como freno
+    delay(850); //lo hace por este tiempo
+    a_h(); // y amortiguamos el frenado con este movimiento
+    delay(250);
+  }
+  stop();
+  delay(1000);
+  }
