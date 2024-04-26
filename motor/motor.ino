@@ -143,7 +143,7 @@ void h()
   digitalWrite(BIB, 0);
 }
 
-
+/// :: MAYOR TIEMPO == MÁS RAPIDEZ :: ////
   void H(int t){
     a_h();
   delay(t); // tiempo en el que se a a quedar funcionando el motor
@@ -167,23 +167,6 @@ void anti_H(int t) //hace lo mismo que H pero en sentido contrario
      a_h();
     delay(850);
     h();
-    delay(250);
-  }
-  stop();
-  delay(1000);
-  }
-
-
-
-
-  void H(int t){
-    a_h();
-  delay(t); // tiempo en el que se a a quedar funcionando el motor
-  //Entre más tiempo sea, más rápido irá el motor. El tiempo lo pasamos como variable
-    for (int i = 1; i==3; i++){
-     h(); //hace movimiento horario como freno
-    delay(850); //lo hace por este tiempo
-    a_h(); // y amortiguamos el frenado con este movimiento
     delay(250);
   }
   stop();
