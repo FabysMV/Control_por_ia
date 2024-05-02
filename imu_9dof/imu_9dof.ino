@@ -5,7 +5,7 @@ int diff = 0;
 int Y = 0; //yaw
 int R = 0; // roll pero no se usa
 //Valores de los angulos a los que se va a posicionar el tracker
-//int anglec = 45; //angulo de cenit
+int anglec = 45; //angulo de cenit
 int anglez = 0;  //angulo de azimut
 //::: Variables para el tiempo (aquí no usamos delay)::://
 unsigned long tiempo = 0;
@@ -17,7 +17,7 @@ boolean flag = false;
 boolean flag_imu = false;
 
 /////BOTÓN/////////////
-int boton = 14; //pin para BOTON 
+int boton = 2; //pin para BOTON 
 int estate_b = 0;
 
 
@@ -60,16 +60,16 @@ void loop() {
 
      euler.calculaEulerAngles(); //obtenemos los valores del imu
      //se guardan en variables los valores de Roll y Yaw        
-      // R = euler.GetRoll();
+       R = euler.GetRoll();
        Y = euler.GetYaw()+diff;
        if (Y >359)
        {Y = Y-360;}
 
        Y = 360- Y;
 
-//      Serial.print(R);
-//      Serial.print(',');
-      Serial.print(Y);
+      Serial.print(R);
+      Serial.print(',');
+      Serial.println(Y);
       Serial.print("\t");
   
   
