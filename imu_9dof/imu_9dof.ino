@@ -47,6 +47,28 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+     tiempo = millis(); //se guarda el valor del tiempo en milisegundos
+     Serial.println("");
+     Serial.println(tiempo); 
+     Serial.print(anglez);
+     Serial.print(',');
+     Serial.print(anglec);
+     Serial.print(',');
+
+     euler.calculaEulerAngles(); //obtenemos los valores del imu
+     //se guardan en variables los valores de Roll y Yaw        
+       R = euler.GetRoll();
+       Y = euler.GetYaw()+diff;
+       if (Y >359)
+       {Y = Y-360;}
+
+       Y = 360- Y;
+
+      Serial.print(R);
+      Serial.print(',');
+      Serial.print(Y);
+      Serial.print("\t");
+  
+  
 
 }
