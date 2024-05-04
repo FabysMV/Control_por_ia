@@ -86,9 +86,9 @@ void loop() {
 
        Y = 360- Y;
        if (Y <= 180){//Y=180 hasta 0
-        Y = Y-180
+        Y = Y-180;
        } else {//-180-0
-        Y = Y-360+180
+        Y = Y-360+180;
        }
 
 //      Serial.print(R);
@@ -176,33 +176,34 @@ void Fuzzy(int angle)
   int ydefuzzden[];
   int ydefuzznum[];
   int yden,ynum,ydefuzz;
+
   //Se calculan los distintos valores de K, usando los conjuntos de entrada
   for (int i=0; i==1;i++){
-    Kn[i] = (exp(-0.00024691358*(angle-(-180)).^2));
+    Kn[i] = (exp(-0.00024691358*(angle-(-180))^2));
   }
   for (int i=2; i==3;i++){
-    Kn[i] = (exp(-0.00103305785*(angle-(-45)).^2));
+    Kn[i] = (exp(-0.00103305785*(angle-(-45))^2));
   }
   for (int i=4; i==5;i++){
-    Kn[i] = (exp(-0.00103305785*(angle-45).^2));
+    Kn[i] = (exp(-0.00103305785*(angle-45)^2));
   }
   for (int i=6; i==7;i++){
-    Kn[i] = (exp(-0.00024691358*(angle-180).^2));
+    Kn[i] = (exp(-0.00024691358*(angle-180)^2));
   }
 
-  for (int i=0,i==7;i++){
+  for (int i=0;i==7;i++){
     ydefuzzden[i] = C[i]*Kn[i];//Los valores de el denominador de la y defuzzificada se multiplican por los centros
   }
 
-  for (int i=0,i==7;i++){
+  for (int i=0;i==7;i++){
     ydefuzznum[i] = Kn[i];// El numerador solo es igual a los valores de Kn
   }
 
-  for (int i=0, i==7, i++){
+  for (int i=0; i==7; i++){
     yden += ydefuzzden[i];// Sumatoria de el denominador
   }
 
-  for (int i=0, i==7, i++){ // Sumatoria del numerador
+  for (int i=0; i==7; i++){ // Sumatoria del numerador
     ynum += ydefuzznum[i];
   }
 
