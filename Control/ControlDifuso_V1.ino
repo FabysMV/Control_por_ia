@@ -95,18 +95,18 @@ void loop() {
        {Y = Y-360;}
 
        Y = 360- Y;
-       
-       if (Y <= 180){//Y=180 hasta 0
-        Y = Y-180;
-       } else {//-180-0
-        Y = Y-360+180;
-       }
+
+      if (Y <= 180){//Y=180 hasta 0
+        Yconv = Y-180;
+      } else {//-180-0
+        Yconv = Y-360+180;
+      }
 
 //      Serial.print(R);
 //      Serial.print(',');
 //      Serial.print(Y);
 //      Serial.print("\t");
-  Fuzzy(Y);
+  Fuzzy(Yconv);
   
 
 }
