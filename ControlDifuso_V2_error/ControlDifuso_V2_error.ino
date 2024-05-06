@@ -115,7 +115,7 @@ void loop() {
 //Funciones motor-------------------------------------------------------------
 
 void stop(){
-  delay(500);
+  //delay(500);
   digitalWrite(BIA, 0);
   digitalWrite(BIB, 0);
   digitalWrite(AIB, 0);
@@ -145,14 +145,14 @@ void h()
     a_h();
   delay(t); // tiempo en el que se a a quedar funcionando el motor
   //Entre más tiempo sea, más rápido irá el motor. El tiempo lo pasamos como variable
-    for (int i = 1; i==3; i++){
+    for (int i = 1; i==2; i++){
      h(); //hace movimiento horario como freno
-    delay(500); //lo hace por este tiempo
+    delay(650); //lo hace por este tiempo
     a_h(); // y amortiguamos el frenado con este movimiento
     delay(250);
   }
   stop();
-  delay(2000);
+  delay(1000);
   }
 
   
@@ -161,14 +161,14 @@ void anti_H(int t) //hace lo mismo que H pero en sentido contrario
     h();
     //t = t*-1
   delay(t);
-    for (int i = 1; i==3; i++){
+    for (int i = 1; i==2; i++){
      a_h();
-    delay(500);
+    delay(650);
     h();
     delay(250);
   }
   stop();
-  delay(2000);
+  delay(1000);
   }
 
 
