@@ -3,16 +3,17 @@
  L9110 motor driver controlling 2 small DC motors 
  */
  int i = 0;
-const int AIA = 11;  // (pwm) pin 9 connected to pin A-IA 
-const int AIB = 10;  // (pwm) pin 5 connected to pin A-IB 
-const int BIA = 8; // (pwm) pin 10 connected to pin B-IA  
-const int BIB = 9;  // (pwm) pin 6 connected to pin B-IB 
+const int AIA = 34;  // (pwm) pin 9 connected to pin A-IA 
+const int AIB = 35;  // (pwm) pin 5 connected to pin A-IB 
+const int BIA = 32; // (pwm) pin 10 connected to pin B-IA  
+const int BIB = 33;  // (pwm) pin 6 connected to pin B-IB 
+ 
  
 byte speed = 255;  // change this (0-255) to control the speed of the motors 
  
 void setup() {
-//  pinMode(AIA, OUTPUT); // set pins to output
-//  pinMode(AIB, OUTPUT);
+  pinMode(AIA, OUTPUT); // set pins to output
+  pinMode(AIB, OUTPUT);
   pinMode(BIA, OUTPUT);
   pinMode(BIB, OUTPUT);
   Serial.begin(9600);
@@ -40,7 +41,7 @@ void loop() {
   //g_180();
   //g_90();
 
-  H(4000);
+  H(1000);
   
   
 
@@ -129,16 +130,16 @@ void stop(){
  
 void a_h()
 {
-//  digitalWrite(AIB, HIGH);
-//  digitalWrite(AIA, 0);
+  digitalWrite(AIB, HIGH);
+  digitalWrite(AIA, 0);
   digitalWrite(BIA, 0);
   digitalWrite(BIB, HIGH);
 }
  
 void h()
 {
-//  digitalWrite(AIB, 0);
-//  digitalWrite(AIA, HIGH);
+  digitalWrite(AIB, 0);
+  digitalWrite(AIA, HIGH);
   digitalWrite(BIA, HIGH);
   digitalWrite(BIB, 0);
 }
