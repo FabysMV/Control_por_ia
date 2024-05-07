@@ -40,6 +40,7 @@ const int BIA = 32; // (pwm) pin 10 connected to pin B-IA
 const int BIB = 33;  // (pwm) pin 6 connected to pin B-IB 
  
 byte speed = 255;  // change this (0-255) to control the speed of the motors 
+sumo_acciones motor;
 //-------------------------------------------------------------------------------------
  
 void setup() {

@@ -39,13 +39,13 @@ const int BIA = 32; // (pwm) pin 10 connected to pin B-IA
 const int BIB = 33;  // (pwm) pin 6 connected to pin B-IB 
  
 byte speed = 255;  // change this (0-255) to control the speed of the motors 
+sumo_acciones motor;
 //-------------------------------------------------------------------------------------
  
 void setup() {
   // put your setup code here, to run once:
   //-------------------Motor cosos-------------------------------------
-  pinMode(BIA, OUTPUT);
-  pinMode(BIB, OUTPUT);
+  motor.SetUp();
   //----------------------------------------------------------------------
   //-------------------MPU Cosos---------------------------------------
   pinMode(boton, INPUT);
@@ -269,9 +269,9 @@ void Fuzzy(int angle)
 
   Serial.println(ydefuzz);
   if (ydefuzz >=0){ //En función del tiempo, si este es positivo girará en sentido horario 
-    avanzar(ydefuzz);
+    motor.avanzar(ydefuzz);
   } else{//Si por el contrario es negativo, girará en sentido antihorario, y el tiempo ingresado a esta función se hará positivo por medio de abs(), evitando así que el universo colapse
-    retroceder(abs(ydefuzz));
+    motor.retroceder(abs(ydefuzz));
   }
 
 
