@@ -1,7 +1,7 @@
 //Librerias-------------------------------------------------------
 #include "quaterniones_angles.h"
 #include "math.h"
-
+#include "sumo_acciones.h"
 //---------------------Variables Varias------------------------
 int Yconv = 0;
 int C[6] = {-255, -97.83, 0, 0, 97.83, 255};
@@ -269,9 +269,9 @@ void Fuzzy(int angle)
 
   Serial.println(ydefuzz);
   if (ydefuzz >=0){ //En función del tiempo, si este es positivo girará en sentido horario 
-    H(ydefuzz);
+    avanzar(ydefuzz);
   } else{//Si por el contrario es negativo, girará en sentido antihorario, y el tiempo ingresado a esta función se hará positivo por medio de abs(), evitando así que el universo colapse
-    anti_H(abs(ydefuzz));
+    retroceder(abs(ydefuzz));
   }
 
 
